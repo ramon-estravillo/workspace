@@ -40,6 +40,7 @@ jobs:
           restore-keys: ${{ runner.os}}-m2
 
       - name: Unit Test with JaCoCo
+        working-directory: config
         run: mvn clean verify -DskipITs
 
   integration-test:
@@ -65,6 +66,7 @@ jobs:
           restore-keys: ${{ runner.os}}-m2
 
       - name: Integration Test Coverage (Failsafe)
+        working-directory: config
         run: mvn clean verify -DskipUTs=true
 
   sonar-analysis-push:
@@ -94,6 +96,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Run SonarCloud Analysis on Push
+        working-directory: config
         run: mvn verify sonar:sonar -DskipTests \
           -Dsonar.login=${{ env.SONAR_TOKEN }} \
           -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
@@ -130,6 +133,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Run SonarCloud Analysis on Push
+        working-directory: config
         run: mvn verify sonar:sonar -DskipTests \
           -Dsonar.login=${{ env.SONAR_TOKEN }} \
           -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
