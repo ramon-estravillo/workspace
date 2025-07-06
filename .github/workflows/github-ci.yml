@@ -15,7 +15,7 @@ env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   SONAR_ORGANIZATION: ramon-estravillo
   SONAR_HOST_URL: https://sonarcloud.io
-  SONAR_PROJECT_KEY: workspace
+  SONAR_PROJECT_KEY: ramon-estravillo_workspace
 
 jobs:
   unit-test:
@@ -98,7 +98,7 @@ jobs:
       - name: Run SonarCloud Analysis on Push
         working-directory: config
         run: |
-          mvn verify sonar:sonar -DskipTests \
+          mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DskipTests \
             -Dsonar.login=${{ env.SONAR_TOKEN }} \
             -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
@@ -136,7 +136,7 @@ jobs:
       - name: Run SonarCloud Analysis on Push
         working-directory: config
         run: |
-          mvn verify sonar:sonar -DskipTests \
+          mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DskipTests \
             -Dsonar.login=${{ env.SONAR_TOKEN }} \
             -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
