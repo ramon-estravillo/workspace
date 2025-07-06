@@ -97,13 +97,14 @@ jobs:
 
       - name: Run SonarCloud Analysis on Push
         working-directory: config
-        run: mvn verify sonar:sonar -DskipTests \
-          -Dsonar.login=${{ env.SONAR_TOKEN }} \
-          -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
-          -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
-          -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
-          -Dsonar.java.coveragePlugin=jacoco \
-          -Dsonar.jacoco.reportPaths=target/jacoco.exec
+        run: |
+          mvn verify sonar:sonar -DskipTests \
+            -Dsonar.login=${{ env.SONAR_TOKEN }} \
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
+            -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
+            -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
+            -Dsonar.java.coveragePlugin=jacoco \
+            -Dsonar.jacoco.reportPaths=target/jacoco.exec
 
   sonar-analysis-pull:
     name: SonarCloud Analysis on Pull Request
@@ -134,10 +135,11 @@ jobs:
 
       - name: Run SonarCloud Analysis on Push
         working-directory: config
-        run: mvn verify sonar:sonar -DskipTests \
-          -Dsonar.login=${{ env.SONAR_TOKEN }} \
-          -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
-          -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
-          -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
-          -Dsonar.java.coveragePlugin=jacoco \
-          -Dsonar.jacoco.reportPaths=target/jacoco.exec
+        run: |
+          mvn verify sonar:sonar -DskipTests \
+            -Dsonar.login=${{ env.SONAR_TOKEN }} \
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
+            -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
+            -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
+            -Dsonar.java.coveragePlugin=jacoco \
+            -Dsonar.jacoco.reportPaths=target/jacoco.exec
