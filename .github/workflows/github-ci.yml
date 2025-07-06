@@ -15,7 +15,7 @@ env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   SONAR_ORGANIZATION: ramon-estravillo
   SONAR_HOST_URL: https://sonarcloud.io
-  SONAR_PROJECT_KEY: ramon-estravillo_workspace
+  SONAR_PROJECT_KEY: workspace
 
 jobs:
   unit-test:
