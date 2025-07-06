@@ -98,8 +98,8 @@ jobs:
       - name: Run SonarCloud Analysis on Push
         working-directory: config
         run: |
-          mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DskipTests \
-            -Dsonar.login=${{ env.SONAR_TOKEN }} \
+          mvn verify sonar:sonar -DskipTests \
+            -Dsonar.login=f4068f9c1d3a44beff7478f27b3307064c552fda \
             -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ env.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }} \
