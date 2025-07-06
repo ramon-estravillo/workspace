@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Unit Test and Generate JaCoCo
         working-directory: config
-        run: mvn clean verify -DskipTestITs
+        run: mvn clean verify -DskipITs
 
   integration-test:
     name: Integration Tests
