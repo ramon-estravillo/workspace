@@ -31,9 +31,9 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os}}-m2
 
-      - name: Unit Test with JaCoCo
+      - name: Run Unit Test and Generate JaCoCo
         working-directory: config
-        run: mvn clean verify -DskipITs
+        run: mvn clean verify jacoco:merge jacoco:report -DskipITs
 
   integration-test:
     name: Integration Tests
@@ -59,7 +59,7 @@ jobs:
 
       - name: Integration Test Coverage (Failsafe)
         working-directory: config
-        run: mvn clean verify -DskipUTs=true
+        run: mvn clean verify jacoco:merge jacoco:report -DskipUTs=true
 
   sonar-analysis-push:
     name: SonarCloud Analysis on Push
