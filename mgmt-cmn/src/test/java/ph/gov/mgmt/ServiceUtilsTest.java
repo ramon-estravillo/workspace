@@ -3,13 +3,21 @@ package ph.gov.mgmt;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class ServiceUtilsTest {
+
+    @Test
+    @DisplayName("Should return an instance when new is called")
+    void constructor_shouldReturnInstance_whenNewIsCalled() throws Exception {
+        Constructor<ServiceUtils> constructor = ServiceUtils.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        assertNotNull(constructor.newInstance());
+    }
 
     @Test
     @DisplayName("Should return true when left > right")
