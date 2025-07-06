@@ -17,9 +17,10 @@
     <properties>
         <encoding>UTF-8</encoding>
         <java.version>17</java.version>
-        <junit.version>5.11.0</junit.version>
         <spring.version>3.5.3</spring.version>
         <jacoco.version>0.8.12</jacoco.version>
+        <mockito.version>5.2.0</mockito.version>
+        <powermock.version>2.0.9</powermock.version>
         <surefire.plugin.version>3.2.5</surefire.plugin.version>
         <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
 
@@ -31,6 +32,10 @@
         <jacoco.file.path>${project.build.directory}/jacoco</jacoco.file.path>
     </properties>
 
+    <modules>
+        <module>../mgmt-cmn</module>
+    </modules>
+
     <distributionManagement>
         <site>
             <id>github</id>
@@ -41,11 +46,52 @@
     <!-- Shared dependency versions -->
     <dependencyManagement>
         <dependencies>
-            <!-- Example: JUnit for all modules -->
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-junit-jupiter</artifactId>
-                <version>${junit.version}</version>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-inline</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-api-mockito2</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4-rule</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4-rule-agent</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
 
@@ -149,9 +195,6 @@
                 <configuration>
                     <skipTests>false</skipTests>
                     <reportFormat>plain</reportFormat>
-                    <consoleOutputReporter>
-                        <disabled>true</disabled>
-                    </consoleOutputReporter>
                     <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter" />
                 </configuration>
             </plugin>
@@ -161,14 +204,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>4.0.0-M16</version>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-project-info-reports-plugin</artifactId>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
             </plugin>
 
             <!-- Maven Fail Safe -->
