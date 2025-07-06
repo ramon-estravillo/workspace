@@ -27,6 +27,8 @@
         <project.version.base>1.0.0</project.version.base>
         <dynamic.version.ctrl>${project.version.base}</dynamic.version.ctrl>
         <maven.build.timestamp.format>yyyyMMdd.HHmm.ss</maven.build.timestamp.format>
+
+        <jacoco.file.path>${project.build.directory}/jacoco</jacoco.file.path>
     </properties>
 
     <distributionManagement>
@@ -145,6 +147,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <skipTests>false</skipTests>
                     <reportFormat>plain</reportFormat>
                     <consoleOutputReporter>
                         <disabled>true</disabled>
@@ -168,6 +171,21 @@
                 </configuration>
             </plugin>
 
+            <!-- Maven Fail Safe -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>verify</goal>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
@@ -181,24 +199,71 @@
                 <version>${jacoco.version}</version>
                 <executions>
                     <execution>
-                        <id>prepare</id>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <destFile>${jacoco.file.path}-ut.exec</destFile>
+                            <propertyName>jacocoAgentArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>prepare-agent-integration</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${jacoco.file.path}-it.exec</destFile>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${jacoco.file.path}-ut.exec</dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>report-integration</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${jacoco.file.path}-it.exec</dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>merge</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>merge</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${jacoco.file.path}-ut.exec</file>
+                                <file>${jacoco.file.path}-it.exec</file>
+                            </files>
+                            <outputFile>${project.build.directory}/jacoco.exec</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>report-merged</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
-                    </execution>
-                    <execution>
-                        <id>report-aggregate</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report-aggregate</goal>
-                        </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-merged</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
