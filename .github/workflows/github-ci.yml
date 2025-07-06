@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Unit Test and Generate JaCoCo
         working-directory: config
-        run: mvn clean verify jacoco:merge jacoco:report -DskipITs
+        run: mvn clean verify -DskipTestITs
 
   integration-test:
     name: Integration Tests
@@ -59,7 +59,7 @@ jobs:
 
       - name: Integration Test Coverage (Failsafe)
         working-directory: config
-        run: mvn clean verify jacoco:merge jacoco:report -DskipUTs=true
+        run: mvn clean verify -DskipUTs
 
   sonar-analysis-push:
     name: SonarCloud Analysis on Push
