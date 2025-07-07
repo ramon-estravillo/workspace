@@ -24,5 +24,5 @@ Include any submodule as a dependency in your service:
 <dependency>
     <groupId>com.git.rcc</groupId>
     <artifactId>rcc-common-bo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
