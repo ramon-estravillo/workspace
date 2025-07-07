@@ -5,13 +5,48 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Set your base group/artifact/version -->
-    <groupId>ph.gov.mgmt</groupId>
-    <artifactId>project-mgmt</artifactId>
+    <groupId>com.git.rcc</groupId>
+    <artifactId>rrc-build-config</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>Example Parent POM</name>
-    <description>Shared configuration for all Maven modules</description>
+    <name>RRC Parent Build Configuration</name>
+    <description>
+        Centralized Maven configuration and dependency management for RRC Java modules,
+        including testing, code coverage, and site reporting.
+    </description>
+
+    <organization>
+        <name>RRC Software Solutions</name>
+        <url>https://rrc.example.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>rcestravillo</id>
+            <name>Ramon Estravillo Jr</name>
+            <email>ramon.estravillo@gmail.com</email> <!-- Use a valid email or GitHub contact -->
+            <organization>RRC</organization>
+            <roles>
+                <role>maintainer</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:ramon-estravillo/workspace.git</connection>
+        <developerConnection>scm:git:git@github.com:ramon-estravillo/workspace.git</developerConnection>
+        <url>https://github.com/ramon-estravillo/workspace</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <site>
+            <id>github</id>
+            <url>scm:git@github.com:ramon-estravillo/workspace.git</url>
+        </site>
+    </distributionManagement>
 
     <!-- Shared properties -->
     <properties>
@@ -35,13 +70,6 @@
     <modules>
         <module>../mgmt-cmn</module>
     </modules>
-
-    <distributionManagement>
-        <site>
-            <id>github</id>
-            <url>scm:git@github.com:ramon-estravillo/workspace.git</url>
-        </site>
-    </distributionManagement>
 
     <!-- Shared dependency versions -->
     <dependencyManagement>
@@ -147,7 +175,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.6.2</version>
+                <version>3.6.1</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -286,10 +314,6 @@
                             <goal>merge</goal>
                         </goals>
                         <configuration>
-<!--                            <files>-->
-<!--                                <file>${jacoco.file.path}-it.exec</file>-->
-<!--                                <file>${jacoco.file.path}-ut.exec</file>-->
-<!--                            </files>-->
                             <fileSets>
                                 <fileSet>
                                     <directory>${project.build.directory}/jacoco</directory>
