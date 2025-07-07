@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.git.rcc</groupId>
         <artifactId>rrc-build-config</artifactId>
@@ -11,5 +12,16 @@
     </parent>
 
     <artifactId>rcc-common</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>RCC Common Library</name>
+    <description>Shared utility classes, constants, and domain objects used across RCC modules and services.</description>
+
+    <url>https://github.com/ramon-estravillo/workspace</url>
+
+    <organization>
+        <name>RCC Software Solutions</name>
+        <url>https://rrc.example.com</url>
+    </organization>
 
 </project>
