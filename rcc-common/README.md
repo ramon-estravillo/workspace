@@ -1,27 +1,28 @@
-# RCC Common Library
+# RCC Common Library (Multi-Module)
 
-The `rcc-common` module provides shared utilities, constants, and domain objects that are reused across RCC services and modules. It helps reduce code duplication and promotes consistency across the platform.
-
----
-
-## 📦 Contents
-
-This module typically includes:
-
-- 📚 **Common utility classes** – String manipulation, date/time helpers, etc.
-- 📐 **Shared domain models** – DTOs or value objects used across modules.
-- 🔁 **Enum and constant definitions** – Standardized values for use across services.
-- ⚙️ **Exception classes** – Common error structures and base exception types.
+The **`rcc-common`** project is a shared library that contains reusable components across RCC services. It is structured as a multi-module Maven project, allowing you to separate domain objects, business logic, and shared service utilities.
 
 ---
 
-## 🧩 Usage
+## 🧱 Modules
 
-To use this module in another Maven project:
+### 📦 `rcc-common-bo`
+Contains shared **business/domain objects** (DTOs, enums, constants, error types) used across RCC services.
+
+### ⚙️ `rrc-common-svc`
+Provides **shared service-level utilities**, such as helper methods, common validators, exception handlers, etc.
+
+---
+
+## 🔧 Usage
+
+Include any submodule as a dependency in your service:
+
+### Example: Use `rcc-common-bo`
 
 ```xml
 <dependency>
     <groupId>com.git.rcc</groupId>
-    <artifactId>rcc-common</artifactId>
+    <artifactId>rcc-common-bo</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
