@@ -1,4 +1,4 @@
-name: GitHub CI
+name: RRC Parent Build CI
 
 on:
   push:
@@ -8,6 +8,9 @@ on:
     branches:
       - '**'
   workflow_dispatch:
+
+env:
+  WORKING_DIR: rrc-config
 
 jobs:
   unit-test:
@@ -32,7 +35,7 @@ jobs:
           restore-keys: ${{ runner.os}}-m2
 
       - name: Run Unit Test and Generate JaCoCo
-        working-directory: config
+        working-directory: ${{ env.WORKING_DIR }}
         run: mvn clean verify -DskipITs
 
   integration-test:
@@ -58,7 +61,7 @@ jobs:
           restore-keys: ${{ runner.os}}-m2
 
       - name: Integration Test Coverage (Failsafe)
-        working-directory: config
+        working-directory: ${{ env.WORKING_DIR }}
         run: mvn clean verify -DskipUTs
 
   sonar-analysis-push:
@@ -89,7 +92,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Run SonarCloud Analysis on Push
-        working-directory: config
+        working-directory: ${{ env.WORKING_DIR }}
         run: |
           mvn verify sonar:sonar -DskipTests \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
@@ -128,7 +131,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Run SonarCloud Analysis on Push
-        working-directory: config
+        working-directory: ${{ env.WORKING_DIR }}
         run: |
           mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DskipTests \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
