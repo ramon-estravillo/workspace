@@ -69,7 +69,7 @@
 
     <modules>
         <module>../mgmt-cmn</module>
-        <module>../rcc-common</module>
+        <module>../rrc-common</module>
     </modules>
 
     <!-- Shared dependency versions -->
