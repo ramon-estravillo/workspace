@@ -11,6 +11,7 @@ on:
 
 env:
   WORKING_DIR: rrc-config
+  ENVIRONMENT_VARIABLES: develop
 
 jobs:
   unit-test:
@@ -67,7 +68,7 @@ jobs:
   sonar-analysis-push:
     name: SonarCloud Analysis on Push
     runs-on: ubuntu-latest
-    environment: develop
+    environment: ${{ env.ENVIRONMENT_VARIABLES }}
     if: github.event_name == 'push'
     needs:
       - unit-test
@@ -105,7 +106,7 @@ jobs:
   sonar-analysis-pull:
     name: SonarCloud Analysis on Pull Request
     runs-on: ubuntu-latest
-    environment: develop
+    environment: ${{ env.ENVIRONMENT_VARIABLES }}
     if: github.event_name == 'pull_request'
     needs:
       - unit-test
