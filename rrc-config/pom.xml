@@ -69,6 +69,7 @@
 
     <modules>
         <module>../mgmt-cmn</module>
+        <module>../rcc-common</module>
     </modules>
 
     <!-- Shared dependency versions -->
@@ -175,7 +176,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.5.0</version>
                 <reportSets>
                     <reportSet>
                         <reports>
