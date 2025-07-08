@@ -95,7 +95,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
         run: |
           mvn verify sonar:sonar -DskipTests \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=${{ vars.SONAR_HOST_URL }} 
@@ -132,7 +132,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
         run: |
           mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DskipTests \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=${{ vars.SONAR_HOST_URL }}
