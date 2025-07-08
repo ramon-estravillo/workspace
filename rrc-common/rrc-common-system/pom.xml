@@ -5,18 +5,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.git.rcc</groupId>
+        <groupId>com.git.rrc</groupId>
         <artifactId>rrc-common</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>rrc-common-bo</artifactId>
+    <artifactId>rrc-common-system</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>RRC Common Business Objects</name>
+    <name>RRC Service Infrastructure Utilities</name>
     <description>
-        Contains shared domain models, constants, and value objects used across RCC applications and services.
+        Contains shared service-level utilities, configuration helpers, and infrastructure components for RRC applications.
     </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.git.rrc</groupId>
+            <artifactId>rrc-common-model</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

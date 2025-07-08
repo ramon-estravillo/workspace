@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.git.rcc</groupId>
+        <groupId>com.git.rrc</groupId>
         <artifactId>rrc-build-config</artifactId>
         <version>1.0.0</version>
         <relativePath>../rrc-config</relativePath>
@@ -15,8 +15,8 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>RRC Common Library</name>
-    <description>Shared utility classes, constants, and domain objects used across RCC modules and services.</description>
+    <name>RRC Shared Libraries</name>
+    <description>Reusable libraries and foundational code shared across all RRC microservices and modules.</description>
 
     <url>https://github.com/ramon-estravillo/workspace</url>
 
@@ -26,8 +26,8 @@
     </organization>
 
     <modules>
-        <module>rrc-common-bo</module>
-        <module>rrc-common-svc</module>
+        <module>rrc-common-model</module>
+        <module>rrc-common-system</module>
     </modules>
 
 </project>

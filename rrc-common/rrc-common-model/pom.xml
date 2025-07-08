@@ -5,26 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.git.rcc</groupId>
+        <groupId>com.git.rrc</groupId>
         <artifactId>rrc-common</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>rrc-common-svc</artifactId>
+    <artifactId>rrc-common-model</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>RRC Common Service Utilities</name>
+    <name>RRC Shared Domain Models</name>
     <description>
-        Provides reusable service-level components, helper methods, and infrastructure utilities used across RCC modules.
+        Includes common business objects, enums, and constants shared across RRC services and modules.
     </description>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.git.rcc</groupId>
-            <artifactId>rrc-common-bo</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>

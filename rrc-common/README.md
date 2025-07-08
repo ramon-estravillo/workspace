@@ -1,28 +1,28 @@
-# RRC Common Library (Multi-Module)
+# RRC Shared Libraries (Multi-Module)
 
-The **`rrc-common`** project is a shared library that contains reusable components across RCC services. It is structured as a multi-module Maven project, allowing you to separate domain objects, business logic, and shared service utilities.
+The **`rrc-common`** project is a set of shared libraries that provide reusable, foundational components across RRC services. Structured as a multi-module Maven project, it separates core domain models, infrastructure utilities, and service-level functionality for better modularity and reusability.
 
 ---
 
 ## 🧱 Modules
 
-### 📦 `rrc-common-bo`
-Contains shared **business/domain objects** (DTOs, enums, constants, error types) used across RCC services.
+### 📦 `rrc-common-model`
+Contains shared **domain models**, including DTOs, enums, constants, and value objects used across RRC applications and services.
 
-### ⚙️ `rrc-common-svc`
-Provides **shared service-level utilities**, such as helper methods, common validators, exception handlers, etc.
+### ⚙️ `rrc-common-system`
+Provides **service infrastructure utilities**, such as helper methods, configuration tools, exception handling, and cross-cutting concerns common to RRC modules.
 
 ---
 
 ## 🔧 Usage
 
-Include any submodule as a dependency in your service:
+You can include any module as a dependency in your service or application.
 
-### Example: Use `rrc-common-bo`
+### Example: Use `rrc-common-model`
 
 ```xml
 <dependency>
-    <groupId>com.git.rcc</groupId>
-    <artifactId>rrc-common-bo</artifactId>
+    <groupId>com.git.rrc</groupId>
+    <artifactId>rrc-common-model</artifactId>
     <version>1.0.0</version>
 </dependency>
