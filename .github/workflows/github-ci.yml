@@ -98,7 +98,8 @@ jobs:
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
-            -Dsonar.host.url=${{ vars.SONAR_HOST_URL }} 
+            -Dsonar.host.url=${{ vars.SONAR_HOST_URL }} \
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco-*/jacoco.xml,**/target/site/jacoco-*/jacoco.xml
 
   sonar-analysis-pull:
     name: SonarCloud Analysis on Pull Request
@@ -135,4 +136,5 @@ jobs:
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
-            -Dsonar.host.url=${{ vars.SONAR_HOST_URL }}
+            -Dsonar.host.url=${{ vars.SONAR_HOST_URL }} \
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco-*/jacoco.xml,**/target/site/jacoco-*/jacoco.xml
