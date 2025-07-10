@@ -224,7 +224,10 @@
                 <configuration>
                     <skipTests>false</skipTests>
                     <reportFormat>plain</reportFormat>
-                    <argLine>${jacocoAgentArgLine}</argLine>
+                    <argLine>
+                        ${jacocoAgentArgLine}
+                        -javaagent:${settings.localRepository}/org/mockito/mockito-inline/5.11.0/mockito-inline-5.11.0.jar
+                    </argLine>
                     <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter" />
                 </configuration>
             </plugin>
