@@ -2,24 +2,25 @@ package com.git.rrc.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-class ErrorResponseTest {
+public class ErrorResponseTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         mapper.registerModule(new JavaTimeModule());
     }
 
     @Test
     @DisplayName("Should serialize error response from dto to json")
-    void shouldSerializeErrorResponseToJson() throws Exception {
+    public void shouldSerializeErrorResponseToJson() throws Exception {
         Error error = new Error("email", "not-an-email");
         ErrorResponse response = new ErrorResponse(
                 "https://example.com/errors/validation",
@@ -40,7 +41,7 @@ class ErrorResponseTest {
 
     @Test
     @DisplayName("Should deserialize error response from json to dto")
-    void shouldDeserializeErrorResponseFromJson() throws Exception {
+    public void shouldDeserializeErrorResponseFromJson() throws Exception {
         String json = """
             {
               "type": "https://example.com/errors/validation",
