@@ -1,4 +1,4 @@
-package com.git.rrc.conf;
+package com.git.rrc.dao;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -9,7 +9,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 
 @Configuration
 @SuppressWarnings("all")
-public class MessageSourceConfig {
+public class MessageSourceDao {
 
     @Bean
     @Primary

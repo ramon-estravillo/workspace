@@ -1,18 +1,19 @@
-package com.git.rrc.conf;
+package com.git.rrc.dao;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MessageSourceConfigTest {
+class MessageSourceDaoTest {
 
-    MessageSourceConfig config;
+    MessageSourceDao config;
 
     @Test
     @DisplayName("Should not return null value")
     void messageSource_shouldNotReturnNullValue(){
-        config = new MessageSourceConfig();
+        config = new MessageSourceDao();
         assertNotNull(config.messageResource());
     }
+    
 }

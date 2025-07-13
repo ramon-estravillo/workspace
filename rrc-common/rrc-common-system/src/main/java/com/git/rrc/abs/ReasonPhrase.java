@@ -1,4 +1,4 @@
-package com.git.rrc.dao;
+package com.git.rrc.abs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

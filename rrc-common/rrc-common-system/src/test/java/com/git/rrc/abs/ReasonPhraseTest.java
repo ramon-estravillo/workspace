@@ -1,4 +1,4 @@
-package com.git.rrc.dao;
+package com.git.rrc.abs;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
