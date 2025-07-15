@@ -29,6 +29,7 @@ import org.springframework.lang.Nullable;
  * ErrorCode errorCode = ErrorCode.BAD_REQUEST;
  * String code = errorCode.getErrorCode(); // "BAD_REQUEST"
  * String message = errorCode.getReasonPhrase(); // e.g., "Bad Request"
+ * int value = error.value(); // 2000
  * }</pre>
  */
 public enum ErrorCode implements CodeConstant {
@@ -92,6 +93,16 @@ public enum ErrorCode implements CodeConstant {
      */
     ErrorCode(int value) {
         this.value = value;
+    }
+
+    /**
+     * Returns the numeric value associated with this error code.
+     *
+     * @return the integer value representing the error code
+     */
+    @Override
+    public int value() {
+        return value;
     }
 
     /**
