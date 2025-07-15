@@ -11,15 +11,15 @@ import static org.mockito.Mockito.mockStatic;
 class ErrorCodeTest {
 
     @Test
-    @DisplayName("Should return corresponding name of the ErrorCode")
-    void getErrorCode_shouldReturnConstantName_whenValueIsPresent() {
+    @DisplayName("Should return the name of the enum constant")
+    void getErrorCode_shouldReturnConstantName() {
         ErrorCode code = ErrorCode.valueOf(2000);
         assertEquals("BAD_REQUEST", code.getErrorCode());
     }
 
     @Test
-    @DisplayName("T")
-    void getReasonPhrase_shouldErrorCodeDetailedMessage_whenValueIsPresent() {
+    @DisplayName("Should return the detailed error message")
+    void getReasonPhrase_shouldErrorCodeDetailedErrorMessage() {
         try(MockedStatic<ReasonPhrase> reasonPhraseMockedStatic = mockStatic(ReasonPhrase.class)) {
             reasonPhraseMockedStatic.when(() -> ReasonPhrase.valueOf(2000)).thenReturn("Bad Request");
 
@@ -30,14 +30,14 @@ class ErrorCodeTest {
     }
 
     @Test
-    @DisplayName("Should return corresponding ErrorCode")
-    void valueOf_shouldReturnErrorCode_whenValueIsPresent() {
+    @DisplayName("Should return the enum constant")
+    void valueOf_shouldReturnErrorCode() {
         assertNotNull(ErrorCode.valueOf(2400));
     }
 
     @Test
     @DisplayName("Should throw an EnumConstantNotPresentException")
-    void valueOf_shouldThrowEnumConstantNotPresentException_whenValueIsNotPresent() {
+    void valueOf_shouldThrowEnumConstantNotPresentException() {
         try {
             ErrorCode.valueOf(1000);
         } catch (Exception e) {
