@@ -31,6 +31,10 @@ import org.springframework.lang.Nullable;
  * String message = errorCode.getReasonPhrase(); // e.g., "Bad Request"
  * int value = error.value(); // 2000
  * }</pre>
+ *
+ * @author Ramon
+ * @version 1.0.0
+ * @since 2025-07-15
  */
 public enum ErrorCode implements CodeConstant {
     // General Errors
