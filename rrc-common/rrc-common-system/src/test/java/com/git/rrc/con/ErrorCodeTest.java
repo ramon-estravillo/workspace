@@ -11,6 +11,12 @@ import static org.mockito.Mockito.mockStatic;
 class ErrorCodeTest {
 
     @Test
+    @DisplayName("Should return the numeric value of the enum constant")
+    void value_shouldReturnNumericValue() {
+        assertEquals(2000, ErrorCode.BAD_REQUEST.value());
+    }
+
+    @Test
     @DisplayName("Should return the name of the enum constant")
     void getErrorCode_shouldReturnConstantName() {
         ErrorCode code = ErrorCode.valueOf(2000);

@@ -11,6 +11,13 @@ package com.git.rrc.abs;
 public interface CodeConstant {
 
     /**
+     * Returns the numeric value associated with this error code.
+     *
+     * @return the integer value representing the error code
+     */
+    int value();
+
+    /**
      * Retrieves the unique error or status code associated with this constant.
      *
      * @return a {@code String} representing the code (e.g., "2000", "404", "ERR_INVALID_INPUT")
