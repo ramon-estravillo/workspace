@@ -13,7 +13,7 @@ class ErrorResponseTest {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mapper.registerModule(new JavaTimeModule());
     }
 
