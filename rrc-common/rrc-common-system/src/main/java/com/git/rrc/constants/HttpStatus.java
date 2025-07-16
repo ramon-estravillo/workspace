@@ -1,4 +1,4 @@
-package com.git.rrc.con;
+package com.git.rrc.constants;
 
 import com.git.rrc.abs.CodeConstant;
 import com.git.rrc.abs.ReasonPhrase;

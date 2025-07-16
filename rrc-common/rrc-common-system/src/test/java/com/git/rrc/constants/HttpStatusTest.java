@@ -1,4 +1,4 @@
-package com.git.rrc.con;
+package com.git.rrc.constants;
 
 import com.git.rrc.abs.ReasonPhrase;
 import org.junit.jupiter.api.DisplayName;
