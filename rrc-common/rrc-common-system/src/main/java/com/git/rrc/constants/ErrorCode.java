@@ -1,42 +1,50 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.CodeConstant;
 import com.git.rrc.abs.ReasonPhrase;
 import org.springframework.lang.Nullable;
 
 /**
  * Enumeration of standardized application error codes with associated integer values.
+ *
  * <p>
- * Each {@code ErrorCode} represents a specific type of error or exception scenario encountered by the system.
- * The error code can be mapped to a localized reason phrase using the {@link ReasonPhrase} utility.
- * This enum implements the {@link CodeConstant} interface, providing methods to retrieve
- * the error code name and a human-readable description.
+ * Each {@code ErrorCode} represents a specific error or exception scenario encountered
+ * during application execution. These codes are intended for use in API responses,
+ * logging, and error handling.
  * </p>
  *
  * <p>
- * Categories include:
+ * The enum implements {@link StatusCode}, allowing consistent access to:
  * <ul>
- *     <li>General Errors (2xxx)</li>
- *     <li>Validation & Resource State Errors (21xx)</li>
- *     <li>Authentication & Authorization Errors (22xx)</li>
- *     <li>Request Format & Structure Errors (23xx)</li>
- *     <li>Server & Infrastructure Errors (24xx)</li>
+ *     <li>{@code value()} — the numeric error code</li>
+ *     <li>{@code getErrorCode()} — the enum constant name</li>
+ *     <li>{@code getReasonPhrase()} — a human-readable message via {@link ReasonPhrase}</li>
  * </ul>
  * </p>
  *
- * Example usage:
+ * <p>
+ * Error codes are grouped by functional category:
+ * <ul>
+ *     <li><strong>General Errors</strong> (2xxx)</li>
+ *     <li><strong>Validation &amp; Resource State Errors</strong> (21xx)</li>
+ *     <li><strong>Authentication &amp; Authorization Errors</strong> (22xx)</li>
+ *     <li><strong>Request Format &amp; Structure Errors</strong> (23xx)</li>
+ *     <li><strong>Server &amp; Infrastructure Errors</strong> (24xx)</li>
+ * </ul>
+ * </p>
+ *
+ * <h3>Example usage:</h3>
  * <pre>{@code
- * ErrorCode errorCode = ErrorCode.BAD_REQUEST;
- * String code = errorCode.getErrorCode(); // "BAD_REQUEST"
- * String message = errorCode.getReasonPhrase(); // e.g., "Bad Request"
- * int value = error.value(); // 2000
+ * ErrorCode errorCode = ErrorCode.RESOURCE_NOT_FOUND;
+ * String code = errorCode.getErrorCode();           // "RESOURCE_NOT_FOUND"
+ * String message = errorCode.getReasonPhrase();     // e.g., "Resource does not exist."
+ * int value = errorCode.value();                    // 2100
  * }</pre>
  *
  * @author Ramon
  * @version 1.0.0
  * @since 2025-07-15
  */
-public enum ErrorCode implements CodeConstant {
+public enum ErrorCode implements StatusCode {
     // General Errors
     BAD_REQUEST(2000),
     OPERATION_NOT_SUPPORTED(2001),
@@ -91,18 +99,18 @@ public enum ErrorCode implements CodeConstant {
     private static final ErrorCode[] VALUES = values();
 
     /**
-     * Constructs an {@code ErrorCode} with the specified integer value.
+     * Constructs an {@code ErrorCode} with the specified numeric value.
      *
-     * @param value the unique numeric identifier for the error
+     * @param value the unique integer identifier for the error
      */
     ErrorCode(int value) {
         this.value = value;
     }
 
     /**
-     * Returns the numeric value associated with this error code.
+     * Returns the numeric code associated with this error.
      *
-     * @return the integer value representing the error code
+     * @return the error code as an integer
      */
     @Override
     public int value() {
@@ -110,31 +118,10 @@ public enum ErrorCode implements CodeConstant {
     }
 
     /**
-     * Returns the name of the enum constant as the error code identifier.
+     * Resolves an {@code ErrorCode} for the given numeric value.
      *
-     * @return a {@code String} representing the enum name (e.g., "BAD_REQUEST")
-     */
-    @Override
-    public String getErrorCode() {
-        return name();
-    }
-
-    /**
-     * Returns the human-readable reason phrase associated with this error code.
-     * This is typically resolved from a message source (e.g., a properties file).
-     *
-     * @return a descriptive message for the error
-     */
-    @Override
-    public String getReasonPhrase() {
-        return ReasonPhrase.valueOf(value);
-    }
-
-    /**
-     * Resolves the {@code ErrorCode} for the given numeric value.
-     *
-     * @param value the numeric code to look up
-     * @return the corresponding {@code ErrorCode}, or {@code null} if not found
+     * @param value the numeric error code
+     * @return the corresponding {@code ErrorCode}, or {@code null} if none matches
      */
     @Nullable
     public static ErrorCode resolve(int value) {
@@ -147,11 +134,11 @@ public enum ErrorCode implements CodeConstant {
     }
 
     /**
-     * Returns the {@code ErrorCode} for the specified value, or throws an exception if not found.
+     * Returns the {@code ErrorCode} for the specified numeric value.
      *
-     * @param value the numeric code to convert
+     * @param value the numeric error code
      * @return the matching {@code ErrorCode}
-     * @throws EnumConstantNotPresentException if no matching enum exists for the given value
+     * @throws EnumConstantNotPresentException if no match is found
      */
     public static ErrorCode valueOf(int value) {
         ErrorCode code = resolve(value);

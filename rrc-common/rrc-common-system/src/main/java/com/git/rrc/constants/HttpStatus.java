@@ -1,33 +1,52 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.CodeConstant;
 import com.git.rrc.abs.ReasonPhrase;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.lang.Nullable;
 
 /**
- * Enumeration of standard HTTP status codes with associated integer values.
+ * Enumeration of standard HTTP status codes with their associated integer values.
+ *
  * <p>
- * Each status code represents a particular response category:
+ * Each {@code HttpStatus} represents a specific HTTP response status as defined in
+ * the HTTP/1.1 specification and extended status definitions. This enum categorizes status
+ * codes based on their numeric range and provides integration with the {@link ReasonPhrase}
+ * utility for human-readable descriptions.
+ * </p>
+ *
+ * <p>
+ * This enum implements {@link StatusCode}, allowing consistent access to:
  * <ul>
- *     <li>1xx - Informational</li>
- *     <li>2xx - Successful</li>
- *     <li>3xx - Redirection</li>
- *     <li>4xx - Client Error</li>
- *     <li>5xx - Server Error</li>
+ *     <li>{@code value()} — the numeric status code</li>
+ *     <li>{@code getErrorCode()} — the enum constant name</li>
+ *     <li>{@code getReasonPhrase()} — a human-readable phrase from {@code ReasonPhrase}</li>
  * </ul>
  * </p>
  *
  * <p>
- * This enum implements {@link CodeConstant} to provide consistent access to
- * a code identifier and localized reason phrase.
+ * Status code categories include:
+ * <ul>
+ *     <li><strong>1xx</strong> – Informational</li>
+ *     <li><strong>2xx</strong> – Successful</li>
+ *     <li><strong>3xx</strong> – Redirection</li>
+ *     <li><strong>4xx</strong> – Client Error</li>
+ *     <li><strong>5xx</strong> – Server Error</li>
+ * </ul>
  * </p>
+ *
+ * <h3>Example usage:</h3>
+ * <pre>{@code
+ * HttpStatus status = HttpStatus.NOT_FOUND;
+ * int code = status.value();                    // 404
+ * String name = status.getErrorCode();          // "NOT_FOUND"
+ * String phrase = status.getReasonPhrase();     // "Not Found"
+ * }</pre>
  *
  * @author Ramon
  * @version 1.0.0
  * @since 2025-07-15
  */
-public enum HttpStatus implements CodeConstant {
+public enum HttpStatus implements StatusCode {
     // Informational
     CONTINUE(100),
     SWITCHING_PROTOCOLS(101),
@@ -98,42 +117,22 @@ public enum HttpStatus implements CodeConstant {
     private static final HttpStatus[] VALUES = values();
 
     /**
-     * Constructs an {@code HttpStatus} enum constant with the specified HTTP status code value.
+     * Constructs an {@code HttpStatus} enum constant with the given HTTP status code.
      *
-     * @param value the integer value representing the HTTP status code
+     * @param value the integer HTTP status code
      */
     HttpStatus(int value) {
         this.value = value;
     }
 
     /**
-     * Returns the numeric HTTP status code associated with this enum constant.
+     * Returns the numeric HTTP status code associated with this constant.
      *
-     * @return the integer HTTP status code (e.g., 404, 200)
+     * @return the HTTP status code as an integer (e.g., 200, 404)
      */
     @Override
     public int value() {
         return value;
-    }
-
-    /**
-     * Returns the string representation of this HTTP status code, based on the enum name.
-     *
-     * @return the name of the enum constant (e.g., "NOT_FOUND", "OK")
-     */
-    @Override
-    public String getErrorCode() {
-        return name();
-    }
-
-    /**
-     * Returns the human-readable reason phrase for this status code, usually localized.
-     *
-     * @return the reason phrase resolved from a message source
-     */
-    @Override
-    public String getReasonPhrase() {
-        return ReasonPhrase.valueOf(value);
     }
 
     /**
@@ -146,10 +145,10 @@ public enum HttpStatus implements CodeConstant {
     }
 
     /**
-     * Resolves the {@code HttpStatus} for the specified numeric value.
+     * Resolves the {@code HttpStatus} enum constant matching the given integer code.
      *
-     * @param value the integer HTTP status code to resolve
-     * @return the corresponding {@code HttpStatus}, or {@code null} if not found
+     * @param value the integer HTTP status code
+     * @return the corresponding {@code HttpStatus}, or {@code null} if no match is found
      */
     @Nullable
     public static HttpStatus resolve(int value) {
@@ -162,11 +161,14 @@ public enum HttpStatus implements CodeConstant {
     }
 
     /**
-     * Returns the {@code HttpStatus} for the specified value, or throws an exception if not found.
+     * Returns the {@code HttpStatus} for the given numeric value.
+     * <p>
+     * This method throws an exception if no matching constant is found.
+     * </p>
      *
-     * @param value the integer HTTP status code to convert
+     * @param value the integer HTTP status code
      * @return the matching {@code HttpStatus}
-     * @throws EnumConstantNotPresentException if no matching enum exists for the given value
+     * @throws EnumConstantNotPresentException if no constant matches the given value
      */
     public static HttpStatus valueOf(int value) {
         HttpStatus status = resolve(value);
