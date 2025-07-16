@@ -1,6 +1,5 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.ReasonPhrase;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.lang.Nullable;
 
@@ -10,7 +9,7 @@ import org.springframework.lang.Nullable;
  * <p>
  * Each {@code HttpStatus} represents a specific HTTP response status as defined in
  * the HTTP/1.1 specification and extended status definitions. This enum categorizes status
- * codes based on their numeric range and provides integration with the {@link ReasonPhrase}
+ * codes based on their numeric range and provides integration with the {@link ReasonPhraseResolver}
  * utility for human-readable descriptions.
  * </p>
  *
@@ -19,7 +18,7 @@ import org.springframework.lang.Nullable;
  * <ul>
  *     <li>{@code value()} — the numeric status code</li>
  *     <li>{@code getErrorCode()} — the enum constant name</li>
- *     <li>{@code getReasonPhrase()} — a human-readable phrase from {@code ReasonPhrase}</li>
+ *     <li>{@code getReasonPhrase()} — a human-readable phrase from {@code ReasonPhraseResolver}</li>
  * </ul>
  * </p>
  *

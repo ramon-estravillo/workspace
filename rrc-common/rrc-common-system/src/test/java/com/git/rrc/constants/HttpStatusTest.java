@@ -1,6 +1,5 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.ReasonPhrase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -26,12 +25,12 @@ class HttpStatusTest {
     @Test
     @DisplayName("Should return the detailed error message")
     void getReasonPhrase_shouldReturnHttpStatusDetailMessage() {
-        try(MockedStatic<ReasonPhrase> reasonPhraseMockedStatic = mockStatic(ReasonPhrase.class)) {
-            reasonPhraseMockedStatic.when(() -> ReasonPhrase.valueOf(200)).thenReturn("OK");
+        try(MockedStatic<ReasonPhraseResolver> reasonPhraseMockedStatic = mockStatic(ReasonPhraseResolver.class)) {
+            reasonPhraseMockedStatic.when(() -> ReasonPhraseResolver.valueOf(HttpStatus.OK)).thenReturn("OK");
 
             assertEquals("OK", HttpStatus.OK.getReasonPhrase());
 
-            reasonPhraseMockedStatic.verify(() -> ReasonPhrase.valueOf(200));
+            reasonPhraseMockedStatic.verify(() -> ReasonPhraseResolver.valueOf(HttpStatus.OK));
         }
     }
 

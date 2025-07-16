@@ -1,6 +1,5 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.ReasonPhrase;
 import org.springframework.lang.Nullable;
 
 /**
@@ -17,7 +16,7 @@ import org.springframework.lang.Nullable;
  * <ul>
  *     <li>{@code value()} — the numeric error code</li>
  *     <li>{@code getErrorCode()} — the enum constant name</li>
- *     <li>{@code getReasonPhrase()} — a human-readable message via {@link ReasonPhrase}</li>
+ *     <li>{@code getReasonPhrase()} — a human-readable message via {@link ReasonPhraseResolver}</li>
  * </ul>
  * </p>
  *

@@ -1,7 +1,5 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.ReasonPhrase;
-
 /**
  * Represents a generic contract for status codes used across the application or protocol layers.
  *
@@ -9,7 +7,7 @@ import com.git.rrc.abs.ReasonPhrase;
  * Implementations of {@code StatusCode} provide:
  * <ul>
  *     <li>A unique numeric {@code value()} used for communication or identification</li>
- *     <li>A human-readable {@code getReasonPhrase()} derived from {@link ReasonPhrase}</li>
+ *     <li>A human-readable {@code getReasonPhrase()} derived from {@link ReasonPhraseResolver}</li>
  *     <li>An {@code getErrorCode()} representing the enum constant name</li>
  * </ul>
  * </p>
@@ -30,7 +28,7 @@ import com.git.rrc.abs.ReasonPhrase;
  *
  * @see ErrorCode
  * @see HttpStatus
- * @see ReasonPhrase
+ * @see ReasonPhraseResolver
  */
 sealed interface StatusCode permits ErrorCode, HttpStatus {
 
@@ -44,14 +42,14 @@ sealed interface StatusCode permits ErrorCode, HttpStatus {
     /**
      * Returns a human-readable reason phrase for this status.
      * <p>
-     * Default implementation delegates to {@link ReasonPhrase#valueOf(int)}.
+     * Default implementation delegates to {@link ReasonPhraseResolver#valueOf(Enum)}.
      * </p>
      *
      * @return the reason phrase
      * @throws IllegalArgumentException if no phrase is available for the value
      */
     default String getReasonPhrase() {
-        return ReasonPhrase.valueOf(value());
+        return ReasonPhraseResolver.valueOf((Enum<?>) this);
     }
 
     /**

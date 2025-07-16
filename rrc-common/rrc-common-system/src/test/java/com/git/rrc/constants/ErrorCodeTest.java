@@ -1,6 +1,5 @@
 package com.git.rrc.constants;
 
-import com.git.rrc.abs.ReasonPhrase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -26,12 +25,12 @@ class ErrorCodeTest {
     @Test
     @DisplayName("Should return the detailed error message")
     void getReasonPhrase_shouldErrorCodeDetailedErrorMessage() {
-        try(MockedStatic<ReasonPhrase> reasonPhraseMockedStatic = mockStatic(ReasonPhrase.class)) {
-            reasonPhraseMockedStatic.when(() -> ReasonPhrase.valueOf(2000)).thenReturn("Bad Request");
+        try(MockedStatic<ReasonPhraseResolver> reasonPhraseMockedStatic = mockStatic(ReasonPhraseResolver.class)) {
+            reasonPhraseMockedStatic.when(() -> ReasonPhraseResolver.valueOf(ErrorCode.BAD_REQUEST)).thenReturn("Bad Request");
 
             String actual = ErrorCode.BAD_REQUEST.getReasonPhrase();
             assertEquals("Bad Request", actual);
-            reasonPhraseMockedStatic.verify(() -> ReasonPhrase.valueOf(2000));
+            reasonPhraseMockedStatic.verify(() -> ReasonPhraseResolver.valueOf(ErrorCode.BAD_REQUEST));
         }
     }
 
