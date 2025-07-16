@@ -23,6 +23,7 @@ import java.util.Locale;
  */
 @Component
 @SuppressWarnings("all")
+@Deprecated
 public class ReasonPhrase {
 
     /**

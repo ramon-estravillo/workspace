@@ -9,6 +9,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 
 @Configuration
 @SuppressWarnings("all")
+@Deprecated
 public class MessageSourceDao {
 
     @Bean
