@@ -1,6 +1,23 @@
 package com.git.rrc.constants;
 
 /**
+ * IMPORTANT:
+ * This class uses Java sealed interfaces with the `permits` clause to enforce
+ * a strict and controlled inheritance hierarchy.
+ * 
+ * SonarCloud flags this as a high-severity "acyclic dependency" issue because
+ * the `permits` clause introduces a deliberate cyclic dependency between
+ * the sealed interface and its permitted subclasses.
+ * 
+ * This cycle is required by the Java language specification for sealed types
+ * and cannot be avoided without removing `sealed` and `permits`, which would
+ * weaken type safety and design constraints.
+ * 
+ * Therefore, this maintainability issue is a known false positive, and can be
+ * safely ignored to preserve the benefits of sealed interfaces.
+ */
+
+/**
  * Represents a generic contract for status codes used across the application or protocol layers.
  *
  * <p>
@@ -30,7 +47,7 @@ package com.git.rrc.constants;
  * @see HttpStatus
  * @see ReasonPhraseResolver
  */
-interface StatusCode {
+sealed interface StatusCode permits ErrorCode, HttpStatus {
 
     /**
      * Returns the numeric value representing this status code.
