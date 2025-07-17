@@ -61,8 +61,8 @@
 
         <!-- Dynamic version base on timestamp -->
         <project.version.base>1.0.0</project.version.base>
-        <dynamic.version.ctrl>${project.version.base}</dynamic.version.ctrl>
         <maven.build.timestamp.format>yyyyMMdd.HHmm.ss</maven.build.timestamp.format>
+        <dynamic.version.ctrl>${project.version.base}-${maven.build.timestamp}</dynamic.version.ctrl>
 
         <jacoco.file.path>${project.build.directory}/jacoco</jacoco.file.path>
     </properties>
@@ -359,7 +359,7 @@
                 </executions>
             </plugin>
 
-            <!-- Build timestamp
+            <!-- Build timestamp -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
@@ -375,11 +375,9 @@
                 <configuration>
                     <doCheck>false</doCheck>
                     <doUpdate>false</doUpdate>
-                    <revisionOnScmFailure>unknown</revisionOnScmFailure>
-                    <workingDirectory>${project.basedir}</workingDirectory>
                     <timestampFormat>${maven.build.timestamp.format}</timestampFormat>
                 </configuration>
-            </plugin>-->
+            </plugin>
 
             <!-- Inject the dynamic version property -->
             <plugin>
