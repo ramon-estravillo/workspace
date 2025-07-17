@@ -1,23 +1,6 @@
 package com.git.rrc.constants;
 
 /**
- * IMPORTANT:
- * This class uses Java sealed interfaces with the `permits` clause to enforce
- * a strict and controlled inheritance hierarchy.
- * 
- * SonarCloud flags this as a high-severity "acyclic dependency" issue because
- * the `permits` clause introduces a deliberate cyclic dependency between
- * the sealed interface and its permitted subclasses.
- * 
- * This cycle is required by the Java language specification for sealed types
- * and cannot be avoided without removing `sealed` and `permits`, which would
- * weaken type safety and design constraints.
- * 
- * Therefore, this maintainability issue is a known false positive, and can be
- * safely ignored to preserve the benefits of sealed interfaces.
- */
-
-/**
  * Represents a generic contract for status codes used across the application or protocol layers.
  *
  * <p>
@@ -27,6 +10,22 @@ package com.git.rrc.constants;
  *     <li>A human-readable {@code getReasonPhrase()} derived from {@link ReasonPhraseResolver}</li>
  *     <li>An {@code getErrorCode()} representing the enum constant name</li>
  * </ul>
+ * </p>
+ *
+ * <p><b>IMPORTANT:</b><br>
+ * This class uses Java sealed interfaces with the {@code permits} clause to enforce
+ * a strict and controlled inheritance hierarchy.
+ * <br><br>
+ * SonarCloud may flag this as a high-severity "acyclic dependency" issue because
+ * the {@code permits} clause introduces a deliberate cyclic dependency between
+ * the sealed interface and its permitted subclasses.
+ * <br><br>
+ * This cycle is required by the Java language specification for sealed types
+ * and cannot be avoided without removing {@code sealed} and {@code permits},
+ * which would weaken type safety and design constraints.
+ * <br><br>
+ * Therefore, this maintainability issue is a known false positive and can be
+ * safely ignored to preserve the benefits of sealed interfaces.
  * </p>
  *
  * <p>
@@ -47,6 +46,7 @@ package com.git.rrc.constants;
  * @see HttpStatus
  * @see ReasonPhraseResolver
  */
+
 sealed interface StatusCode permits ErrorCode, HttpStatus {
 
     /**
