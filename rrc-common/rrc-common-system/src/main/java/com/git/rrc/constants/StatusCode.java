@@ -30,7 +30,7 @@ package com.git.rrc.constants;
  * @see HttpStatus
  * @see ReasonPhraseResolver
  */
-sealed interface StatusCode permits ErrorCode, HttpStatus {
+interface StatusCode {
 
     /**
      * Returns the numeric value representing this status code.
