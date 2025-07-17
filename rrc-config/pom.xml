@@ -68,8 +68,7 @@
     </properties>
 
     <modules>
-        <module>../mgmt-cmn</module>
-        <module>../rrc-common</module>
+        <module>../rrc-core</module>
     </modules>
 
     <!-- Shared dependency versions -->
