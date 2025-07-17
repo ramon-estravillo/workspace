@@ -5,17 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.git.rrc</groupId>
-        <artifactId>rrc-build-config</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../rrc-config/pom.xml</relativePath>
+        <artifactId>rrc-core</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rrc-core</artifactId>
+    <groupId>com.git.rrc.core</groupId>
+    <artifactId>rrc-core-exception</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>RRC Core Parent</name>
-    <description>Parent POM for core shared libraries, providing foundational configurations and dependencies used across all RRC microservices and modules.</description>
+    <name>RRC Core Exception Library</name>
+    <description>Centralized exception handling library that defines custom exceptions, error codes, and standardized error responses for RRC microservices and modules.</description>
 
     <url>https://github.com/ramon-estravillo/workspace</url>
 
@@ -24,8 +24,4 @@
         <url>https://rrc.example.com</url>
     </organization>
 
-    <modules>
-        <module>rrc-core-utility</module>
-        <module>rrc-core-exception</module>
-    </modules>
 </project>
