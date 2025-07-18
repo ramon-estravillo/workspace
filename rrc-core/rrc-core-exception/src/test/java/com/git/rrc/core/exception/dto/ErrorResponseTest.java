@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@DisplayName("ErrorResponse Unit Tests")
 class ErrorResponseTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
