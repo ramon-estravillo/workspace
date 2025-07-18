@@ -1,7 +1,7 @@
 # 🧱 RRC Standardized Custom Exceptions for Spring Boot
 
 [![Version](https://img.shields.io/badge/version-1.0.0--SNAPSHOT-blue)](https://github.com/ramon-estravillo/workspace)
-[![Build](https://img.shields.io/github/actions/workflow/status/ramon-estravillo/workspace/maven.yml?label=build&style=flat-square)](https://github.com/ramon-estravillo/workspace/actions)
+[![Build Status](https://github.com/ramon-estravillo/workspace/actions/workflows/github-ci.yml/badge.svg)](https://github.com/ramon-estravillo/workspace/actions/github-ci.yml)
 
 This module provides a structured set of custom exceptions for **consistent**, **meaningful**, and **reusable** error handling across all RRC microservices.
 
