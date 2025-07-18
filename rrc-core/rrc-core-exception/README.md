@@ -1,61 +1,101 @@
-## 🧱 Standardized Custom Exceptions for a Spring Boot Application
+# 🧱 RRC Standardized Custom Exceptions for Spring Boot
 
-This project defines a set of custom exceptions to provide clear, consistent, and maintainable error handling throughout the application.
+[![Version](https://img.shields.io/badge/version-1.0.0--SNAPSHOT-blue)](https://github.com/ramon-estravillo/workspace)
+[![Build](https://img.shields.io/github/actions/workflow/status/ramon-estravillo/workspace/maven.yml?label=build&style=flat-square)](https://github.com/ramon-estravillo/workspace/actions)
 
-### ✅ Exception Overview
+This module provides a structured set of custom exceptions for **consistent**, **meaningful**, and **reusable** error handling across all RRC microservices.
 
-| **Exception Name**                | **HTTP Status** | **When to Use**                                                                 | **Source**                             |
-|----------------------------------|-----------------|---------------------------------------------------------------------------------|--------------------------------------|
-| `ValidationFailureException`     | 400 Bad Request | Input fails business rule validation or custom validator logic                  | [`ValidationFailureException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/ValidationFailureException.java) |
-| `ResourceNotFoundException`      | 404 Not Found   | Resource (e.g., user, order) not found in the database                          | [`ResourceNotFoundException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/ResourceNotFoundException.java) |
-| `DataIntegrityException`         | 409 Conflict    | Database constraints violated (e.g., duplicate key, foreign key violation)      | [`DataIntegrityException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/DataIntegrityException.java) |
-| `AuthenticationException`        | 401 Unauthorized| Login fails due to invalid credentials                                          | [`AuthenticationException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/AuthenticationException.java) |
-| `AuthorizationException`         | 403 Forbidden   | User does not have permission to access the requested resource                  | [`AuthorizationException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/AuthorizationException.java) |
-| `OperationNotAllowedException`   | 403 Forbidden   | Operation disallowed in current context (e.g., canceling a shipped order)       | [`OperationNotAllowedException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/OperationNotAllowedException.java) |
-| `ExternalServiceException`       | 502 Bad Gateway | External API or service call fails                                              | [`ExternalServiceException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/ExternalServiceException.java) |
-| `DuplicateResourceException`     | 409 Conflict    | Resource already exists (e.g., duplicate email or username)                     | [`DuplicateResourceException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/DuplicateResourceException.java) |
-| `FileStorageException`           | 500 Internal Server Error | Error during file upload/download or storage                           | [`FileStorageException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/FileStorageException.java) |
-| `BusinessRuleViolationException` | 400 Bad Request | High-level domain/business logic violation (e.g., account already closed)       | [`BusinessRuleViolationException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/BusinessRuleViolationException.java) |
-| `PaymentProcessingException`     | 502 Bad Gateway | Payment gateway or transaction failure                                          | [`PaymentProcessingException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/PaymentProcessingException.java) |
-| `ConfigurationException`         | 500 Internal Server Error | Application misconfiguration or missing critical runtime settings        | [`ConfigurationException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/ConfigurationException.java) |
-| `RateLimitExceededException`     | 429 Too Many Requests | API call throttling or too many requests                                    | [`RateLimitExceededException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/RateLimitExceededException.java) |
-| `ConflictException`              | 409 Conflict    | General conflict (e.g., concurrent update conflicts)                          | [`ConflictException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/ConflictException.java) |
-| `ServerErrorException`           | 500 Internal Server Error | Unexpected internal server errors (e.g., null pointer, I/O failure)       | [`ServerErrorException.java`](https://github.com/yourorg/yourrepo/blob/main/src/main/java/com/yourcompany/yourproject/exception/ServerErrorException.java) |
+> 📦 Maven Module: `rrc-core-exception`  
+> 🏷️ Version: `${dynamic.version.ctrl}` (generated using Maven timestamp)
 
 ---
 
-### 📁 Recommended Package Structure
+## ✅ Exception Overview
 
-Organize your exception classes in a dedicated package for better maintainability:
-
-```
-src/main/java/com/yourcompany/yourproject/exception
-├── ApplicationException.java # Base class for all custom exceptions
-├── ValidationFailureException.java
-├── ResourceNotFoundException.java
-├── DataIntegrityException.java
-├── ...
-├── ServerErrorException.java
-├── GlobalExceptionHandler.java # @RestControllerAdvice for centralized handling
-├── ErrorResponse.java # DTO returned in API error responses
-```
-
+| **Exception Name**                | **HTTP Status**            | **Purpose**                                                                 |
+|----------------------------------|-----------------------------|------------------------------------------------------------------------------|
+| `ValidationFailureException`     | `400 Bad Request`           | Business rule or custom validator violations                                |
+| `ResourceNotFoundException`      | `404 Not Found`             | Resource (user, order, etc.) not found                                      |
+| `DataIntegrityException`         | `409 Conflict`              | Database constraint violations                                               |
+| `AuthenticationException`        | `401 Unauthorized`          | Invalid login credentials                                                    |
+| `AuthorizationException`         | `403 Forbidden`             | User lacks access to the requested resource                                 |
+| `OperationNotAllowedException`   | `403 Forbidden`             | Logical disallowance of an operation (e.g., cancel shipped order)           |
+| `ExternalServiceException`       | `502 Bad Gateway`           | Downstream service/API failure                                               |
+| `DuplicateResourceException`     | `409 Conflict`              | Duplicate key/resource exists (e.g., email or username)                      |
+| `FileStorageException`           | `500 Internal Server Error` | Error during file upload/download or disk storage                            |
+| `BusinessRuleViolationException` | `400 Bad Request`           | Domain-specific business logic violations                                    |
+| `PaymentProcessingException`     | `502 Bad Gateway`           | Payment provider or gateway failure                                          |
+| `ConfigurationException`         | `500 Internal Server Error` | Runtime misconfiguration or missing env setup                               |
+| `RateLimitExceededException`     | `429 Too Many Requests`     | API throttling or request flooding                                           |
+| `ConflictException`              | `409 Conflict`              | General purpose conflict (e.g., concurrent modifications)                    |
+| `ServerErrorException`           | `500 Internal Server Error` | Fallback for unexpected internal errors                                      |
 
 ---
 
-### 📖 OpenAPI / Swagger Integration
+## 📁 Package Structure
 
-You can map these exceptions in your OpenAPI specification to provide detailed API error responses. Use annotations like:
+```
+rrc-core-exception
+└── src
+    └── main
+        └── java
+            └── com
+                └── git
+                    └── rrc
+                        └── core
+                            └── exception
+                                ├── ApplicationException.java
+                                ├── ValidationFailureException.java
+                                ├── ResourceNotFoundException.java
+                                ├── ...
+                                ├── ServerErrorException.java
+                                ├── GlobalExceptionHandler.java
+                                └── ErrorResponse.java
+
+```
+
+- `ApplicationException.java`: Abstract base class for all custom exceptions.
+
+- `GlobalExceptionHandler.java`: Centralized @RestControllerAdvice that maps exceptions to HTTP responses.
+
+- `ErrorResponse.java`: DTO that standardizes the API error response payload.
+
+---
+
+## 📦 Maven Dependency
+
+To use in another RRC module:
+```xml
+<dependency>
+    <groupId>com.git.rrc.core</groupId>
+    <artifactId>rrc-core-exception</artifactId>
+    <version>${dynamic.version.ctrl}</version>
+</dependency>
+```
+
+---
+
+## 🎯 OpenAPI / Swagger Support
+
+Document your exceptions in your service OpenAPI spec:
 
 ```java
-@Schema(description = "Error response model")
+@Schema(description = "Standard error response")
 public class ErrorResponse {
     private String errorCode;
     private String errorMessage;
-    // getters, setters
 }
-@ApiResponses(value = {
-    @ApiResponse(responseCode = "400", description = "Validation failed", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-    @ApiResponse(responseCode = "404", description = "Resource not found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-    // etc.
+
+@ApiResponses({
+    @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+    @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
 })
+```
+
+---
+
+## 📌 Notes
+- This module is not meant to be executable or deployable.
+- It's shared via the parent project ``rrc-core`` to all other microservices.
+- Exception classes extend a common base and can be caught globally or at the controller level.
