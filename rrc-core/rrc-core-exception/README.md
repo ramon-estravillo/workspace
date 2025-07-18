@@ -46,7 +46,7 @@ rrc-core-exception
                     └── rrc
                         └── core
                             └── exception
-                                ├── ApplicationException.java
+                                ├── StandardApplicationException.java
                                 ├── ValidationFailureException.java
                                 ├── ResourceNotFoundException.java
                                 ├── ...
@@ -56,7 +56,7 @@ rrc-core-exception
 
 ```
 
-- `ApplicationException.java`: Abstract base class for all custom exceptions.
+- `StandardApplicationException.java`: Abstract base class for all custom exceptions.
 
 - `GlobalExceptionHandler.java`: Centralized @RestControllerAdvice that maps exceptions to HTTP responses.
 
