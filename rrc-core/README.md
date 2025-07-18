@@ -1,7 +1,7 @@
 # 🧱 RRC Core Libraries (Multi-Module)
 
 [![Version](https://img.shields.io/badge/version-1.0.0--SNAPSHOT-blue)](https://github.com/ramon-estravillo/workspace)
-[![Build](https://img.shields.io/github/actions/workflow/status/ramon-estravillo/workspace/github-ci.yml?label=build&style=flat-square)](https://github.com/ramon-estravillo/workspace/actions/github-ci.yml)
+[![Build Status](https://github.com/ramon-estravillo/workspace/actions/workflows/github-ci.yml/badge.svg)](https://github.com/ramon-estravillo/workspace/actions/github-ci.yml)
 
 The **`rrc-core`** project is a set of foundational libraries that provide **reusable**, **shared**, and **standardized** components across RRC microservices.
 
