@@ -21,8 +21,8 @@ import lombok.Getter;
 @Getter
 public class StandardApplicationException extends RuntimeException {
 
-    private ErrorCode errorCode;
-    private HttpStatus httpStatus;
+    private final ErrorCode errorCode;
+    private final HttpStatus httpStatus;
 
     /**
      * Constructs a default exception with {@code INTERNAL_SERVER_ERROR}
