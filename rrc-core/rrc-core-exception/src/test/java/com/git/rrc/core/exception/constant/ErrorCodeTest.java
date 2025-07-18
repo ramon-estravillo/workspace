@@ -7,6 +7,7 @@ import org.mockito.MockedStatic;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mockStatic;
 
+@DisplayName("ErrorCode Unit Tests")
 class ErrorCodeTest {
 
     @Test
