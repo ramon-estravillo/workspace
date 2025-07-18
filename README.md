@@ -1,8 +1,10 @@
 # 🧱 RRC Workspace
 
-[![Version](https://img.shields.io/badge/version-1.0.0--SNAPSHOT-blue)](https://github.com/ramon-estravillo/workspace)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/ramon-estravillo/workspace)
 [![Build Status](https://github.com/ramon-estravillo/workspace/actions/workflows/github-ci.yml/badge.svg)](https://github.com/ramon-estravillo/workspace/actions/github-ci.yml)
 [![License](https://img.shields.io/github/license/ramon-estravillo/workspace?style=flat-square)](LICENSE)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ramon-estravillo_workspace&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ramon-estravillo_workspace)
+
 
 > Central repository for foundational modules, configurations, and shared libraries powering the **RRC microservices platform**.
 
