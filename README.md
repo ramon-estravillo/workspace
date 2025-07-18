@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/ramon-estravillo/workspace)
 [![Build Status](https://github.com/ramon-estravillo/workspace/actions/workflows/github-ci.yml/badge.svg)](https://github.com/ramon-estravillo/workspace/actions/github-ci.yml)
 [![License](https://img.shields.io/github/license/ramon-estravillo/workspace?style=flat-square)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ramon-estravillo_workspace&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ramon-estravillo_workspace)
 
 
