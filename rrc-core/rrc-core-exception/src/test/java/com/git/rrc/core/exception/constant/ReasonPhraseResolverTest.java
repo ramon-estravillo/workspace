@@ -9,6 +9,7 @@ import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("ReasonPhraseResolver Unit Tests")
 class ReasonPhraseResolverTest {
 
     ReasonPhraseResolver resolver;
