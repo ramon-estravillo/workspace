@@ -27,6 +27,7 @@ abstract class BaseExceptionTest {
                         case RESOURCE_NOT_FOUND -> "Resource does not exist.";
                         case INTERNAL_SERVER_ERROR -> "Internal server error.";
                         case REQUEST_CONFLICT -> "Request conflict.";
+                        case VALIDATION_FAILED -> "Validation failure";
                         default -> throw new EnumConstantNotPresentException(ErrorCode.class, String.valueOf(code.value()));
                     };
                 });
