@@ -38,7 +38,7 @@ import java.util.Locale;
  */
 @Component
 @SuppressWarnings("all")
-class ReasonPhraseResolver {
+public class ReasonPhraseResolver {
 
     private static MessageSource errorCodeMessageSource;
     private static MessageSource httpStatusMessageSource;

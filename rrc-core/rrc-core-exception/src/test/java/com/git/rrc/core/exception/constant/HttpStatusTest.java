@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatusCode;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mockStatic;
 
+@DisplayName("HttpStatus Unit Tests")
 class HttpStatusTest {
 
     @Test

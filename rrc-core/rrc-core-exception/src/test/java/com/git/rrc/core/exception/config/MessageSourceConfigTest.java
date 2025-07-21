@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("MessageSourceConfig Unit Tests")
 class MessageSourceConfigTest {
 
     private MessageSource source;
